@@ -5069,6 +5069,17 @@ export default function AdminDashboard({
                     className="w-full rounded-xl border border-slate-700 bg-slate-950 p-3 text-xs text-white"
                   />
                 </div>
+
+                <div className="space-y-1 sm:col-span-2">
+                  <label className="text-xs font-bold text-slate-300">{isRtl ? 'رابط صورة المشروع (Image URL):' : 'Project Image URL:'}</label>
+                  <input
+                    type="text"
+                    value={editingProject.imageUrl || ''}
+                    onChange={(e) => setEditingProject({ ...editingProject, imageUrl: e.target.value })}
+                    placeholder="https://example.com/image.jpg"
+                    className="w-full rounded-xl border border-slate-700 bg-slate-950 px-3.5 py-2.5 text-xs text-white"
+                  />
+                </div>
               </div>
 
               {/* SECTION: LOCAL FILE MANAGEMENT & UPLOAD (تحديد نوع الملف ومميزته وتحميل ملفات المشروع من جهازك) */}

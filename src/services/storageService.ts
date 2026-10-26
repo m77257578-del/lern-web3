@@ -1215,12 +1215,16 @@ export const storageService = {
     const cleanName = name.trim().toLowerCase();
     const cleanEmail = (email || '').trim().toLowerCase();
 
-    // Reject registration if phone, email, OR name already exists in cachedUsers
+    // Reject registration if phone or email already exists in cachedUsers (ignore name)
     const isDuplicate = cachedUsers.some(u => {
-      const matchPhone = u.phone && u.phone.trim() === cleanPhone;
-      const matchName = cleanName && u.name && u.name.trim().toLowerCase() === cleanName;
-      const matchEmail = cleanEmail && u.email && u.email.trim().toLowerCase() === cleanEmail;
-      return matchPhone || matchName || matchEmail;
+      const matchPhone = u.phone && cleanPhone && u.phone.trim() === cleanPhone;
+      const matchEmail = u.email && cleanEmail && u.email.trim().toLowerCase() === cleanEmail;
+      
+      if (matchPhone || matchEmail) {
+        console.warn('Duplicate registration detected:', { matchPhone, matchEmail, cleanPhone, cleanEmail });
+        return true;
+      }
+      return false;
     });
 
     if (isDuplicate) {

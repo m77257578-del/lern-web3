@@ -1083,49 +1083,13 @@ export default function App() {
                         : 'Dedicated administrative suite for CMS publishing, dynamic FAQs, instant announcements, payment wallets orchestration, and AI customization draft moderation.'}
                     </p>
 
-                    {/* 10 Feature Badges */}
-                    <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-2.5 pt-2">
-                      {[
-                        { labelAr: '📝 إدارة مقالات الـ CMS', labelEn: 'CMS Articles' },
-                        { labelAr: '❓ بنك الأسئلة الشائعة', labelEn: 'Dynamic FAQs' },
-                        { labelAr: '📢 شريط الإعلانات', labelEn: 'Announcements' },
-                        { labelAr: '🚀 المشاريع والأكواد', labelEn: 'Projects Catalog' },
-                        { labelAr: '💳 محافظ الدفع الفوري', labelEn: 'Payment Wallets' },
-                        { labelAr: '🤖 مسودات الذكاء الاصطناعي', labelEn: 'AI Staged Drafts' },
-                        { labelAr: '💬 تذاكر الدعم والرسائل', labelEn: 'Support Tickets' },
-                        { labelAr: '👥 حسابات العملاء', labelEn: 'User Accounts' },
-                        { labelAr: '📊 التحليلات والرسوم', labelEn: 'Live Analytics' },
-                        { labelAr: '🌐 إعدادات SEO والهوية', labelEn: 'SEO & Branding' }
-                      ].map((feat, idx) => (
-                        <div key={idx} className="rounded-xl border border-slate-800 bg-slate-950/80 p-2.5 text-center text-xs font-semibold text-slate-300">
-                          {isRtl ? feat.labelAr : feat.labelEn}
-                        </div>
-                      ))}
-                    </div>
-
-                    {/* Instant Demo Access Button */}
-                    <div className="pt-4 flex flex-wrap items-center gap-3">
-                      <button
-                        onClick={() => {
-                          storageService.loginAdmin('100100');
-                          setIsAdmin(true);
-                          refreshStorageData();
-                          showToast(isRtl ? '👑 تم فتح لوحة التحكم والـ CMS بنجاح!' : 'Admin & CMS Panel unlocked!', 'success');
-                        }}
-                        className="flex items-center gap-2 rounded-2xl bg-gradient-to-r from-amber-500 via-orange-500 to-amber-600 px-6 py-3.5 text-xs sm:text-sm font-black text-slate-950 shadow-xl shadow-amber-500/25 hover:from-amber-400 hover:to-orange-400 transition active:scale-95 cursor-pointer"
-                      >
-                        <span>⚡</span>
-                        <span>{isRtl ? 'الدخول الفوري المباشر للوحة التحكم (رمز المرور 100100)' : 'Instant Demo Admin Access (Passcode 100100)'}</span>
-                      </button>
-
-                      <button
-                        onClick={() => setIsSecretLoginOpen(true)}
-                        className="flex items-center gap-2 rounded-2xl border border-slate-700 bg-slate-900 hover:bg-slate-800 px-5 py-3 text-xs sm:text-sm font-bold text-slate-200 transition cursor-pointer"
-                      >
-                        <Lock className="w-4 h-4 text-slate-400" />
-                        <span>{isRtl ? 'تسجيل الدخول برمز مخصص' : 'Custom Passcode Sign In'}</span>
-                      </button>
-                    </div>
+                    <button
+                      onClick={() => setIsSecretLoginOpen(true)}
+                      className="flex items-center gap-2 rounded-2xl border border-slate-700 bg-slate-900 hover:bg-slate-800 px-5 py-3 text-xs sm:text-sm font-bold text-slate-200 transition cursor-pointer"
+                    >
+                      <Lock className="w-4 h-4 text-slate-400" />
+                      <span>{isRtl ? 'تسجيل الدخول برمز مخصص' : 'Custom Passcode Sign In'}</span>
+                    </button>
                   </div>
                 </div>
               )}
